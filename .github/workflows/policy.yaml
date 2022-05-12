@@ -1,0 +1,14 @@
+name: Policy Compliance
+
+on:
+  push:
+  pull_request:
+
+jobs:
+
+  policy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579 # renovate: tag=v2.4.0
+      - uses: docker://ghcr.io/policy-as-versioned-code/policy-checker:latest
+
