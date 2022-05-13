@@ -16,18 +16,17 @@
       datasourceTemplate: "github-tags",
       depNameTemplate: "policy",
       packageNameTemplate: "policy-as-versioned-code/policy",
-      versioningTemplate: "semver"
-
+      versioningTemplate: "semver",
     },
     {
-      "fileMatch": [".*tf$"],
-      "matchStrings": [
-        "#\\s*renovate:\\s*policy?\\s*default = \"(?<currentValue>.*)\"\\s"
+      fileMatch: [".*tf$"],
+      matchStrings: [
+        '#\\s*renovate:\\s*policy?\\s*default = "(?<currentValue>.*)"\\s',
       ],
-      "datasourceTemplate": "github-tags",
-      "depNameTemplate": "policy",
-      "lookupNameTemplate": "example-policy-org/policy",
-      "versioningTemplate": "semver"
-    }
+      datasourceTemplate: "github-tags",
+      depNameTemplate: "policy",
+      lookupNameTemplate: "policy-as-versioned-code/policy",
+      versioningTemplate: "semver",
+    },
   ],
 }
