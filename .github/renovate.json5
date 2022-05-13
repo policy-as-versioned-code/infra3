@@ -1,5 +1,33 @@
 {
-  "extends": [
-    "github>chrisns/.github:renovate"
-  ]
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  dependencyDashboard: true,
+  automerge: false,
+  pinDigests: true,
+  separateMajorMinor: true,
+  separateMinorPatch: true,
+  separateMultipleMajor: true,
+  rollbackPrs: true,
+  labels: ["policy"],
+
+  regexManagers: [
+    {
+      fileMatch: ["kustomization.yaml"],
+      matchStrings: ['mycompany.com/policy-version: "(?<currentValue>.*)"\\s+'],
+      datasourceTemplate: "github-tags",
+      depNameTemplate: "policy",
+      packageNameTemplate: "policy-as-versioned-code/policy",
+      versioningTemplate: "semver"
+
+    },
+    {
+      "fileMatch": [".*tf$"],
+      "matchStrings": [
+        "#\\s*renovate:\\s*policy?\\s*default = \"(?<currentValue>.*)\"\\s"
+      ],
+      "datasourceTemplate": "github-tags",
+      "depNameTemplate": "policy",
+      "lookupNameTemplate": "example-policy-org/policy",
+      "versioningTemplate": "semver"
+    }
+  ],
 }
